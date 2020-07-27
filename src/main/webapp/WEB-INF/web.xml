@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	 version="3.1">
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <servlet>
+        <servlet-name>hello</servlet-name>
+        <servlet-class>com.web.HelloServlet</servlet-class>
+    </servlet>
+    
+    <!-- url pattern是使用者在瀏覽器打出的網址
+        下方的<servlet-name>hello</servlet-name>
+        會對應到上方的 <servlet-name>hello</servlet-name>
+        並指向到 com.web.HelloServlet
+    -->
+    <servlet-mapping>
+        <servlet-name>hello</servlet-name>
+        <url-pattern>/web/hello</url-pattern>
+    </servlet-mapping>
+    <!--兩個servlet-mapping代表這網站可以從兩個網址進入-->
+    <servlet-mapping>
+        <servlet-name>hello</servlet-name>
+        <url-pattern>/web/hello</url-pattern>
+    </servlet-mapping>
+</web-app>
