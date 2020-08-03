@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    
     <session-config>
         <session-timeout>
             30
@@ -9,11 +10,21 @@
         <servlet-name>hello</servlet-name>
         <servlet-class>com.web.servlet.HelloServlet</servlet-class>
     </servlet>
+    
+    <servlet>
+        <description>i cal bmi!</description>
+        <servlet-name>bmiServlet</servlet-name>
+        <servlet-class>com.web.servlet.BMIServlet</servlet-class>
+    </servlet>
     <!-- url pattern是使用者在瀏覽器打出的網址
         下方的<servlet-name>hello</servlet-name>
         會對應到上方的 <servlet-name>hello</servlet-name>
         並指向到 com.web.HelloServlet
     -->
+    <servlet-mapping>
+        <servlet-name>bmiServlet</servlet-name>
+        <url-pattern>/servlet/bmi</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>hello</servlet-name>
         <url-pattern>/web/hello</url-pattern>
@@ -23,9 +34,8 @@
         <servlet-name>hello</servlet-name>
         <url-pattern>/servlet/hello</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>hello</servlet-name>
-        <url-pattern>/servlet/fucc</url-pattern>
+        <url-pattern>/servlet/yes</url-pattern>
     </servlet-mapping>
 </web-app>
