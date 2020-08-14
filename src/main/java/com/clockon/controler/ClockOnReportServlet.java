@@ -7,6 +7,9 @@ package com.clockon.controler;
 
 import com.clockon.model.ClockOnModel;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +24,19 @@ import javax.servlet.http.HttpServletResponse;
 public class ClockOnReportServlet extends HttpServlet {
     private ClockOnModel model = new ClockOnModel();
     protected void doHandler(String no ,HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().print(model.queryClockOn(no));
+       
+        List<Map<String, String>> logs = null;
+        if(no.equalsIgnoreCase("all")) {
+            logs = model.queryClockOn();
+        } else {
+            logs = model.queryClockOn(no);
+        }
+        //給<%=request.getAttribute("logs")%>設值
+        req.setAttribute("logs",logs);
+        //打卡完後
+        //重島到clock_on.jsp
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/clockon/view/clock_on.jsp");
+        rd.forward(req, resp);
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
